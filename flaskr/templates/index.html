@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scraper</title>
+</head>
+<body>
+
+    <style>
+        table {
+            border-collapse: collapse; /* テーブルの境界線を1つにまとめる */
+        }
+
+        th, td {
+            max-width: 800px;
+            border: 1px solid black; /* 枠線を黒色で表示 */
+            padding: 8px; /* セルの余白 */
+            text-align: left; /* テキストを左寄せ */
+        }
+    </style>
+
+
+
+    <form action="/scrape" method="post">
+        <label for="url">URL:</label>
+        <input type="text" id="url" name="url" required>
+        <button type="submit">Scrape</button>
+    </form>
+
+<!-- <p>スクレイピングしたいサイトを選択して下さい</p>
+    <select name="" id="">
+        <option value="">youtube</option>
+        <option value="">みんなのランキング</option>
+        <option value="">amazon</option>
+        <option value="">楽天ショッピング</option>
+        <option value="">メルカリ</option>
+        <option value="">twitter</option>
+    </select> -->
+    
+    <h1>Scraped Result</h1>
+<label for="saveButton">csv</label><button name="saveButton">保存する</button>
+    <table>
+        <tr>
+            <th>順位</th>
+            <th>名前</th>
+            <th>概要</th>
+        </tr>
+
+        {% for item in data %} 
+        <tr>
+            <td>{{ item['順位'] }}</td>
+            <td>{{ item['名前'] }}</td>
+            <td>{{ item['概要'] }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+
+
+</body>
+</html>
